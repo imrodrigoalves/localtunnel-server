@@ -1,4 +1,3 @@
-import log from 'book';
 import Koa from 'koa';
 import tldjs from 'tldjs';
 import Debug from 'debug';
@@ -6,7 +5,7 @@ import http from 'http';
 import { hri } from 'human-readable-ids';
 import Router from 'koa-router';
 
-import ClientManager from './ClientManager';
+import ClientManager from './ClientManager.js';
 
 const debug = Debug('lt:server');
 
@@ -27,7 +26,6 @@ export default function (opt) {
 
   const app = new Koa();
   const router = new Router();
-  const authentication_token = process.env.AUTH_TOKEN || opt.token;
 
   app.use(async (ctx, next) => {
     try {
@@ -37,20 +35,6 @@ export default function (opt) {
       ctx.body = err.message;
     }
   });
-
-  if (authentication_token) {
-    app.use((ctx, next) => {
-      const token = ctx.request.query.token;
-      if (!token || authentication_token !== token) {
-        const err = new Error(`Missing or unknown token.`);
-        err.status = 511;
-        err.code = 'TOKEN_ERROR';
-        throw err;
-      } else {
-        return next();
-      }
-    });
-  }
 
   router.get('/api/status', async (ctx, next) => {
     const stats = manager.stats;

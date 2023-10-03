@@ -1,4 +1,4 @@
-#!/usr/bin/env node -r esm
+#!/usr/bin/env node
 
 import 'localenv';
 import optimist from 'optimist';
@@ -6,10 +6,10 @@ import optimist from 'optimist';
 import log from 'book';
 import Debug from 'debug';
 
-import CreateServer from '../src/server';
+import CreateServer from '../src/server.js';
+import yn from 'yn';
 
 const debug = Debug('localtunnel');
-const yn = require('yn');
 
 const argv = optimist
   .usage(

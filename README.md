@@ -1,9 +1,5 @@
 # localtunnel-server
 
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-zenjoy%2Flocaltunnel-lightgrey?style=flat)](https://hub.docker.com/r/zenjoy/localtunnel)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/zenjoy/localtunnel-server?label=version)](https://github.com/zenjoy/localtunnel-server/tags)
-[![License](https://img.shields.io/github/license/zenjoy/docker-postgres-createdb)](https://github.com/zenjoy/localtunnel-server/blob/main/LICENSE)
-
 localtunnel exposes your localhost to the world for easy testing and sharing! No need to mess with
 DNS or deploy just to have others test out your changes.
 
@@ -27,9 +23,9 @@ The server will listen on any OS-assigned TCP port for client connections.
 
 ```shell
 # pick a place where the files will live
-git clone git://github.com/zenjoy/localtunnel-server.git
+git clone repourl
 cd localtunnel-server
-yarn install
+npm install
 
 # server set to run on port 1234
 bin/server --port 1234
